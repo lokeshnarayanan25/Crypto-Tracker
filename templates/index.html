@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f2f6f3">
+  <title>Crypto Tracker | Market Overview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <script src="{{ url_for('static', filename='js/dashboard.js') }}" defer></script>
+</head>
+<body>
+  <header class="masthead">
+    <a class="wordmark" href="/" aria-label="Crypto Tracker home">
+      <span class="mark" aria-hidden="true">C</span>
+      <span class="wordmark-name">CRYPTO TRACKER</span>
+    </a>
+    <nav class="site-nav" aria-label="Main navigation">
+      <a class="active" href="/" aria-current="page">Market</a>
+      <a href="/history">History</a>
+      <a href="/csv">CSV data</a>
+    </nav>
+    <div class="provider"><span class="provider-dot"></span> LIVE MARKET DATA</div>
+  </header>
+
+  <main class="page">
+    <section class="page-heading">
+      <div>
+        <p class="eyebrow">CRYPTOCURRENCY PRICE TRACKER</p>
+        <h1>Market overview</h1>
+      </div>
+      <button class="refresh-button" id="refreshButton" type="button">
+        <span class="refresh-icon" aria-hidden="true">↻</span>
+        <span>Refresh now</span>
+      </button>
+    </section>
+
+    <section class="status-strip" aria-live="polite">
+      <div class="status-message">
+        <span class="status-indicator" id="statusIndicator"></span>
+        <span id="statusText">Loading market data</span>
+      </div>
+      <div class="updated">UPDATED <time id="updatedTime">--</time></div>
+    </section>
+
+    <section class="toolbar" aria-label="Market filters">
+      <div class="price-filter">
+        <label class="filter-label" for="minimumPrice">USD PRICE</label>
+        <div class="range-inputs">
+          <input id="minimumPrice" type="number" min="0" step="any" placeholder="Min">
+          <span class="range-separator">to</span>
+          <input id="maximumPrice" type="number" min="0" step="any" placeholder="Max">
+          <button class="text-button" id="applyPriceFilter" type="button">Apply</button>
+        </div>
+      </div>
+      <div class="filter-actions">
+        <button class="filter-button" id="gainersButton" type="button">Top gainers</button>
+        <button class="clear-button" id="clearFilters" type="button">Clear</button>
+      </div>
+      <span class="result-count" id="resultCount">0 coins</span>
+    </section>
+
+    <section class="table-wrap" aria-label="Top cryptocurrency prices">
+      <table>
+        <thead>
+          <tr>
+            <th class="rank-column">#</th>
+            <th>ASSET</th>
+            <th class="numeric">PRICE (USD)</th>
+            <th class="numeric">24H CHANGE</th>
+            <th class="numeric">MARKET CAP</th>
+          </tr>
+        </thead>
+        <tbody id="coinRows"></tbody>
+      </table>
+      <div class="empty-state" id="emptyState" hidden>
+        <span class="empty-mark" aria-hidden="true">—</span>
+        <p id="emptyMessage">Waiting for market data</p>
+      </div>
+    </section>
+
+    <footer class="page-footer">
+      <span>Live cryptocurrency prices and market metrics.</span>
+      <span>Historical snapshots are appended to <code>data/crypto_data.csv</code>.</span>
+    </footer>
+  </main>
+</body>
+</html>

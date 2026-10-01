@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f2f6f3">
+  <title>CSV Archive | Crypto Tracker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <script src="{{ url_for('static', filename='js/csv.js') }}" defer></script>
+</head>
+<body>
+  <header class="masthead">
+    <a class="wordmark" href="/" aria-label="Crypto Tracker home">
+      <span class="mark" aria-hidden="true">C</span>
+      <span class="wordmark-name">CRYPTO TRACKER</span>
+    </a>
+    <nav class="site-nav" aria-label="Main navigation">
+      <a href="/">Market</a>
+      <a href="/history">History</a>
+      <a class="active" href="/csv" aria-current="page">CSV data</a>
+    </nav>
+    <div class="provider"><span class="provider-dot"></span> MARKET ARCHIVE</div>
+  </header>
+
+  <main class="page history-page">
+    <section class="page-heading">
+      <div>
+        <p class="eyebrow">SAVED SNAPSHOTS</p>
+        <h1>CSV archive</h1>
+      </div>
+      <a class="refresh-button export-link" href="/api/download">Download CSV</a>
+    </section>
+
+    <section class="csv-archive" aria-label="Saved CSV records">
+      <div class="csv-toolbar">
+        <label class="filter-label" for="csvSearch">FIND COIN</label>
+        <input id="csvSearch" type="search" placeholder="Name or symbol" autocomplete="off">
+        <span class="result-count" id="recordCount">Loading records</span>
+      </div>
+      <div class="table-wrap">
+        <table class="csv-table">
+          <thead>
+            <tr>
+              <th>RECORDED</th>
+              <th class="numeric">RANK</th>
+              <th>NAME</th>
+              <th>SYMBOL</th>
+              <th class="numeric">PRICE (USD)</th>
+              <th class="numeric">24H CHANGE</th>
+              <th class="numeric">MARKET CAP (USD)</th>
+              <th>SOURCE</th>
+            </tr>
+          </thead>
+          <tbody id="csvRows"></tbody>
+        </table>
+        <div class="empty-state" id="csvEmpty" hidden>
+          <span class="empty-mark" aria-hidden="true">—</span>
+          <p id="csvEmptyMessage">No CSV records found.</p>
+        </div>
+      </div>
+      <div class="csv-pagination" aria-label="CSV record pages">
+        <button class="filter-button" id="previousPage" type="button">Previous</button>
+        <span class="result-count" id="pageLabel">Page 1</span>
+        <button class="filter-button" id="nextPage" type="button">Next</button>
+      </div>
+    </section>
+
+    <footer class="page-footer">
+      <span>Showing newest snapshots first. Download CSV exports the complete archive.</span>
+      <a href="/history">View price trends</a>
+    </footer>
+  </main>
+</body>
+</html>

@@ -1,0 +1,49 @@
+# ── Python ────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+*.pyd
+.Python
+
+# ── Virtual environments ──────────────────────────────────────────
+venv/
+.venv/
+env/
+ENV/
+.env
+*.env
+
+# ── Generated data (CSV is auto-created on first run) ────────────
+data/crypto_data.csv
+
+# ── ChromeDriver & Selenium temp files ───────────────────────────
+chromedriver*
+chromedriver.exe
+.local-chromium/
+.wdm/
+
+# Flask
+instance/
+.webassets-cache
+flask_session/
+
+# ── OS files ──────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── IDE ───────────────────────────────────────────────────────────
+.vscode/settings.json
+.idea/
+*.swp
+*.swo
+
+# ── Distribution / packaging ──────────────────────────────────────
+dist/
+build/
+*.egg-info/
+.eggs/
+
+# ── Logs ─────────────────────────────────────────────────────────
+*.log

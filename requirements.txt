@@ -1,0 +1,8 @@
+# Cryptocurrency Price Tracker dependencies
+selenium
+webdriver-manager
+undetected-chromedriver
+pandas
+requests
+Flask
+rich

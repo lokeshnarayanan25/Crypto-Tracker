@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f2f6f3">
+  <title>Price History | Crypto Tracker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="{{ url_for('static', filename='js/history.js') }}" defer></script>
+</head>
+<body>
+  <header class="masthead">
+    <a class="wordmark" href="/" aria-label="Crypto Tracker home">
+      <span class="mark" aria-hidden="true">C</span>
+      <span class="wordmark-name">CRYPTO TRACKER</span>
+    </a>
+    <nav class="site-nav" aria-label="Main navigation">
+      <a href="/">Market</a>
+      <a class="active" href="/history" aria-current="page">History</a>
+      <a href="/csv">CSV data</a>
+    </nav>
+    <div class="provider"><span class="provider-dot"></span> COINMARKETCAP DATA</div>
+  </header>
+
+  <main class="page history-page">
+    <section class="page-heading">
+      <div>
+        <p class="eyebrow">SAVED SNAPSHOTS</p>
+        <h1>Price history</h1>
+      </div>
+      <a class="refresh-button export-link" href="/api/download">Download CSV</a>
+    </section>
+
+    <section class="history-chart-panel">
+      <div class="chart-heading">
+        <div>
+          <h2>Price trend</h2>
+          <p id="chartSubtitle">Historical USD prices by snapshot</p>
+        </div>
+        <label class="coin-select-label" for="coinSelect">ASSET
+          <select id="coinSelect" aria-label="Select a coin"></select>
+        </label>
+      </div>
+      <div class="chart-frame"><canvas id="trendChart" aria-label="Selected coin price history"></canvas></div>
+      <p class="chart-empty" id="chartEmpty" hidden>No saved price history is available yet.</p>
+    </section>
+
+    <section class="history-table-section">
+      <div class="history-table-heading">
+        <div>
+          <p class="eyebrow">CSV ARCHIVE</p>
+          <h2>Recorded prices</h2>
+        </div>
+        <span class="result-count" id="historyCount">Loading history</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>RECORDED</th>
+              <th>ASSET</th>
+              <th class="numeric">PRICE (USD)</th>
+              <th class="numeric">24H CHANGE</th>
+              <th class="numeric">MARKET CAP</th>
+            </tr>
+          </thead>
+          <tbody id="historyRows"></tbody>
+        </table>
+      </div>
+    </section>
+    <footer class="page-footer">
+      <span>History is loaded from the append-only CSV log.</span>
+      <a href="/">Back to market overview</a>
+    </footer>
+  </main>
+</body>
+</html>
