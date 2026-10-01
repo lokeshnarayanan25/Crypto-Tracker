@@ -36,7 +36,7 @@ Start the local website:
 python app.py
 ```
 
-Open **http://127.0.0.1:5000** in your browser. The page shows the latest saved CSV snapshot, refreshes CoinMarketCap every 10 seconds, and lets you filter by price or view top gainers.
+With the server running, open [http://127.0.0.1:5000/](http://127.0.0.1:5000/) in your browser. Keep the terminal running while you use the website. The page shows the latest saved CSV snapshot, refreshes CoinMarketCap every 10 seconds, and lets you filter by price or view top gainers.
 
 Visit `/history` to browse saved snapshots and view price trends. Visit `/csv` to search and browse archived CSV rows in the website, or use **Download CSV** there to save the complete file locally. `/api/prices` and `/api/history` provide JSON data; `/api/download` downloads the CSV.
 
