@@ -30,7 +30,9 @@ Flask serves the local web dashboard, `rich` powers the terminal dashboard, and 
 
 ## Run
 
-Start the local website:
+In VS Code, the local website starts automatically when you open this workspace. If VS Code asks whether to allow automatic tasks, allow them for this workspace.
+
+To start the local website manually outside that workflow:
 
 ```bash
 python app.py

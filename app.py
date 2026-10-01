@@ -1,9 +1,11 @@
 """Local web interface for the CoinMarketCap price tracker."""
 
+import csv
 import json
 import os
 import threading
 import time
+from io import BytesIO, StringIO
 
 from flask import Flask, jsonify, render_template, request, send_file
 
@@ -128,7 +130,20 @@ def api_history():
 @app.route("/api/download")
 def api_download():
     if os.path.isfile(CSV_PATH):
-        return send_file(CSV_PATH, as_attachment=True, download_name="crypto_data.csv")
+        with open(CSV_PATH, encoding="utf-8-sig", newline="") as source:
+            rows = csv.reader(source)
+            headers = next(rows, None)
+            output = StringIO(newline="")
+            writer = csv.writer(output)
+            if headers is not None:
+                writer.writerow(headers)
+                timestamp_index = headers.index("timestamp") if "timestamp" in headers else None
+                for row in rows:
+                    if timestamp_index is not None and timestamp_index < len(row):
+                        row[timestamp_index] = "'" + row[timestamp_index]
+                    writer.writerow(row)
+        download = BytesIO(output.getvalue().encode("utf-8-sig"))
+        return send_file(download, as_attachment=True, download_name="crypto_data.csv")
     return jsonify({"error": "No CSV history exists yet."}), 404
 
 
