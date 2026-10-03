@@ -11,6 +11,7 @@ A Selenium-powered Python tool that loads CoinMarketCap in Google Chrome and ext
 - Optionally filters displayed results by USD price range or highest 24-hour gainers.
 - Exports CSV data for use in analysis and dashboard tools.
 - Provides a Flask web dashboard with live refresh, charts, history, and CSV download.
+- Tracks a personal coin portfolio with quantity, average buy price, current value, and unrealized profit/loss. Portfolio entries are saved in the current browser.
 - Includes a Rich terminal dashboard and an interactive CLI menu.
 
 ## Requirements
@@ -39,6 +40,8 @@ python app.py
 ```
 
 With the server running, open [http://127.0.0.1:5000/](http://127.0.0.1:5000/) in your browser. Keep the terminal running while you use the website. The page shows the latest saved CSV snapshot, refreshes CoinMarketCap every 10 seconds, and lets you filter by price or view top gainers.
+
+Use **Portfolio tracking** on the market page to select a listed coin and enter the quantity held and average buy price in USD. Adding a coin already in the portfolio updates its holding. Current value and unrealized profit/loss use the latest market price. Portfolio data is stored locally in that browser and is not added to the CSV history.
 
 Visit `/history` to browse saved snapshots and view price trends. Visit `/csv` to search and browse archived CSV rows in the website, or use **Download CSV** there to save the complete file locally. `/api/prices` and `/api/history` provide JSON data; `/api/download` downloads the CSV.
 

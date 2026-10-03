@@ -81,6 +81,65 @@
       </div>
     </section>
 
+    <section class="portfolio-section" aria-labelledby="portfolioHeading">
+      <div class="portfolio-heading">
+        <div>
+          <p class="eyebrow">YOUR WATCHLIST</p>
+          <h2 id="portfolioHeading">Portfolio tracking</h2>
+        </div>
+        <div class="portfolio-totals" aria-live="polite">
+          <div>
+            <span class="portfolio-label">CURRENT VALUE</span>
+            <strong id="portfolioValue">$0.00</strong>
+          </div>
+          <div>
+            <span class="portfolio-label">UNREALIZED P/L</span>
+            <strong id="portfolioProfitLoss">$0.00</strong>
+          </div>
+        </div>
+      </div>
+      <p class="portfolio-note" id="portfolioNote">
+        Add your coin quantity and average purchase price. Portfolio data is saved in this browser.
+      </p>
+      <form class="portfolio-form" id="portfolioForm">
+        <label>
+          <span class="filter-label">COIN</span>
+          <select id="portfolioCoin" required aria-label="Coin to track">
+            <option value="">Load market data first</option>
+          </select>
+        </label>
+        <label>
+          <span class="filter-label">QUANTITY</span>
+          <input id="portfolioQuantity" type="number" min="0" step="any" required placeholder="e.g. 0.5">
+        </label>
+        <label>
+          <span class="filter-label">AVG. BUY PRICE (USD)</span>
+          <input id="portfolioBuyPrice" type="number" min="0" step="any" required placeholder="e.g. 25000">
+        </label>
+        <button class="refresh-button portfolio-submit" type="submit">Add to portfolio</button>
+      </form>
+      <p class="portfolio-message" id="portfolioMessage" role="status"></p>
+      <div class="table-wrap portfolio-table-wrap">
+        <table class="portfolio-table">
+          <thead>
+            <tr>
+              <th>ASSET</th>
+              <th class="numeric">QUANTITY</th>
+              <th class="numeric">AVG. BUY PRICE</th>
+              <th class="numeric">CURRENT PRICE</th>
+              <th class="numeric">VALUE</th>
+              <th class="numeric">UNREALIZED P/L</th>
+              <th><span class="visually-hidden">Actions</span></th>
+            </tr>
+          </thead>
+          <tbody id="portfolioRows"></tbody>
+        </table>
+        <div class="empty-state" id="portfolioEmptyState">
+          <p>Your portfolio is empty. Add a coin above to start tracking it.</p>
+        </div>
+      </div>
+    </section>
+
     <footer class="page-footer">
       <span>Live cryptocurrency prices and market metrics.</span>
       <span>Historical snapshots are appended to <code>data/crypto_data.csv</code>.</span>
