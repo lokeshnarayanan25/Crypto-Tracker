@@ -444,5 +444,3 @@ def load_from_csv(path: str = CSV_PATH) -> pd.DataFrame | None:
     if not os.path.isfile(path):
         return None
     return pd.read_csv(path)
-
-
